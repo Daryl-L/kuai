@@ -10,7 +10,8 @@ import { NervosChainSource } from './chain-source'
 async function bootstrap() {
   const kuaiCtx = await initialKuai()
   const kuaiEnv = kuaiCtx.getRuntimeEnvironment()
-  const port = kuaiEnv.config?.port || 3000
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const port = (kuaiEnv.config as any)?.port || 3000
 
   Reflect.defineMetadata(ProviderKey.Actor, new ActorReference('resource', ''), Manager)
 
